@@ -6,6 +6,7 @@ import chess.ChessMatch;
 public class Program {
 
 	public static void main(String[] args) {
+		
 		try {
 			ChessMatch match = new ChessMatch();
 			match.initialSetup();

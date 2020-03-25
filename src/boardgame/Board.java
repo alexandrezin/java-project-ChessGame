@@ -27,7 +27,7 @@ public class Board {
 	
 	//positionExistsMethod
 	private boolean positionExistsMethod (int row, int column) {
-		if (row>this.rows || row<1 || column>this.columns || column<1) {
+		if (row>this.rows || row<0 || column>this.columns || column<0) {
 			return false;
 		}
 		return true;
