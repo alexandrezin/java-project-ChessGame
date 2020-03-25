@@ -1,11 +1,19 @@
 package application;
 
+import boardgame.exceptions.BoardException;
 import chess.ChessMatch;
 
 public class Program {
 
 	public static void main(String[] args) {
-		 ChessMatch match = new ChessMatch();
-		 UI.printBoard(match.getPieces());
+		try {
+			ChessMatch match = new ChessMatch();
+			match.initialSetup();
+			UI.printBoard(match.getPieces());
+		}
+		catch(BoardException exception) {
+			System.out.println(exception.getMessage());
+		}
 	}
 }
+ 

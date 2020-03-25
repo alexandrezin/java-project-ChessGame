@@ -5,6 +5,7 @@ import chess.ChessPiece;
 public class UI {
 	
 	public static void printBoard(ChessPiece[][] pieces) {
+		System.out.println("  A B C D E F G H");
 		for (int row=0; row<pieces.length; row++) {
 			System.out.print(row + 1 + " ");
 			for (int column = 0; column<pieces.length; column ++) {
