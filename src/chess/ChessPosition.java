@@ -28,7 +28,7 @@ public class ChessPosition{
 	 return new Position(this.row - 1, charToInt(this.column) - 1);	
 	}
 	
-	public ChessPosition fromPosition(Position position) {
+	public static ChessPosition fromPosition(Position position) {
 		return new ChessPosition(position.getRow() + 1, intToChar(position.getColumn()));
 	}
 	
@@ -36,7 +36,7 @@ public class ChessPosition{
 		return (int) c - 64;
 	}
 	
-	public char intToChar(int i) {
+	public static char intToChar(int i) {
 		return (char)(i + 64);
 	}
 	

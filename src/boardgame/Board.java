@@ -54,7 +54,7 @@ public class Board {
 		return thereIsAPieceMethod(row,column);
 	}
 	
-	//Piece
+	//Get Piece
 	public Piece piece(int row, int column) {
 		if (!positionExists(row, column)) {
 			throw new BoardException("This position does not exist: " +row + " " + column);
@@ -76,5 +76,18 @@ public class Board {
 		}
 		pieces[position.getRow()][position.getColumn()] = piece;
 		piece.position = position;
+	}	
+	
+	//Remove a Piece
+	public Piece removePiece(Position position) {
+		if (!positionExists(position.getRow(), position.getColumn())) {
+			throw new BoardException("This position does not exist: " + position.getRow() + " " + position.getColumn());
+		}
+		if (piece(position) == null) {
+			throw new BoardException("There is no piece at this position: " + position.getRow() + " " + position.getColumn());
+		}
+		Piece aux = piece(position);
+		pieces[position.getRow()][position.getColumn()] = null;
+		return aux;
 	}
 }

@@ -8,8 +8,12 @@ public class Piece {
 	public Piece(Board board) {
 		this.board = board;
 	}
-
-	public Board getBoard() {
+	
+	public Position getPosition() {
+		return position;
+	}
+	
+	protected Board getBoard() {
 		return board;
 	}
 }
