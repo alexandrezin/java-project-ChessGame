@@ -1,13 +1,17 @@
 package chess;
 
 import boardgame.Position;
+import chess.exceptions.ChessException;
 
 public class ChessPosition{
 	int row;
 	char column;
 	//Position position;
 	
-	public ChessPosition(int row, char column) {
+	public ChessPosition(int row, char column) throws ChessException{
+		if (column < 'A' || column > 'H' || row < 1 || row > 8) {
+			throw new ChessException("This position does not exist");
+		}
 		this.row = row;
 		this.column = column;
 	}
@@ -16,31 +20,28 @@ public class ChessPosition{
 		return row;
 	}
 
-	public void setRow(int row) {
-		this.row = row;
-	}
-
 	public char getColumn() {
 		return column;
 	}
 
-	public void setColumn(char column) {
-		this.column = column;
-	}
-
-	public Position toPosition(int row, char column) {
-	 return new Position(row, charToInt(column));	
+	public Position toPosition() {
+	 return new Position(this.row - 1, charToInt(this.column) - 1);	
 	}
 	
 	public ChessPosition fromPosition(Position position) {
-		return new ChessPosition(position.getRow(), intToChar(position.getColumn()));
+		return new ChessPosition(position.getRow() + 1, intToChar(position.getColumn()));
 	}
 	
-	private int charToInt(char c) {
+	public int charToInt(char c) {
 		return (int) c - 64;
 	}
 	
-	private char intToChar(int i) {
+	public char intToChar(int i) {
 		return (char)(i + 64);
+	}
+	
+	@Override
+	public String toString(){ 
+		return "" + this.column + this.row;
 	}
 }
